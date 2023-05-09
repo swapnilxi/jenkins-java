@@ -1,11 +1,21 @@
-pipeline{ agent any
-stages{
-    stage('Build Maven'){
-        steps{
-            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/swapnilxi/jenkins-java/']])
-            sh 'mvn clean install'
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Building the application..."'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying the application..."'
+            }
         }
     }
-}
 }
 
