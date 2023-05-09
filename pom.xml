@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.swapnilxi</groupId>
 	<artifactId>javajenkins</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>javajenkins</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -89,6 +89,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>JavaJenkins</finalName>
 	</build>
 
 </project>
