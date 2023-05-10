@@ -1,6 +1,7 @@
 # Base image
 FROM openjdk:17
-EXPOSE 8080
+#EXPOSE 8090
+EXPOSE 8081
 
 
 # Copy jar file to container

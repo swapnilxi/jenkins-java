@@ -1,24 +1,51 @@
 pipeline {
-    agent any
+    agent any 
+   
     stages {
-        stage('Build') {
+        stage('Compile and Clean') { 
             steps {
-                sh 'echo "Building the application..."'
+                // Run Maven on a Unix agent.
+              
+                sh "mvn clean compile"
             }
         }
-        stage('Test') {
+        stage('deploy') { 
+            
             steps {
-                sh 'echo "Running tests..."'
+                sh "mvn package"
             }
         }
-        stage('docker image') {
+        stage('Build Docker image'){
+          
             steps {
-                scripts{
-                    sh docker build -t swapnilxi/javaJenkins
+                echo "swapnilxi"
+                sh 'ls'
+                sh 'docker build -t  swapnilxi/javajenkins:${BUILD_NUMBER} .'
+            }
+        }
+        stage('Docker Login'){
+            
+            steps {
+                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+                    sh "docker login -u swapnilxi -p ${Dockerpwd}"
                 }
-                
+            }                
+        }
+        stage('Docker Push'){
+            steps {
+                sh 'docker push swapnilxi/javajenkins:${BUILD_NUMBER}'
+            }
+        }
+        stage('Docker deploy'){
+            steps {
+               
+                sh 'docker run -itd -p  8081:8080 swapnilxi/javajenkinsgi:${BUILD_NUMBER}'
+            }
+        }
+        stage('Archving') { 
+            steps {
+                 archiveArtifacts '**/target/*.jar'
             }
         }
     }
 }
-

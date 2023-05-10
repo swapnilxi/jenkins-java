@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Building the application..."'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests..."'
+            }
+        }
+        stage('docker image') {
+            steps {
+                scripts{
+                    sh 'docker build -t swapnilxi/javaJenkins .'
+                }
+                
+            }
+        }
+    }
+}
+
