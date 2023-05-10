@@ -89,7 +89,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>JavaJenkins</finalName>
+		<finalName>javajenkins </finalName>
 	</build>
 
 </project>

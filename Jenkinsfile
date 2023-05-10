@@ -11,9 +11,12 @@ pipeline {
                 sh 'echo "Running tests..."'
             }
         }
-        stage('Deploy') {
+        stage('docker image') {
             steps {
-                sh 'echo "Deploying the application..."'
+                scripts{
+                    sh docker build -t swapnilxi/javaJenkins
+                }
+                
             }
         }
     }
