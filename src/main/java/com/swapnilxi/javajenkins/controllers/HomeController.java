@@ -8,5 +8,9 @@ public class HomeController {
     public String getHome(){
         return " this is home";
     }
+@GetMapping("/docker")
+public String dockerHome(){
+    return "this is docker home";
+}
     
 }

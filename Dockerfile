@@ -1,7 +1,7 @@
 # Base image
 FROM openjdk:17
-EXPOSE 8088
-WORKDIR /app
+EXPOSE 8080
+
 
 # Copy jar file to container
 ADD target/javajenkins.jar javajenkins.jar
