@@ -9,13 +9,13 @@ pipeline {
             steps {
                 // Run Maven on a Unix agent.
               
-                sh "mvn clean compile"
+                sh "./mvnw clean compile"
             }
         }
-        stage('deploy') { 
+        stage('deploying jar') { 
             
             steps {
-                sh "mvn package"
+                sh './mvnw package'
             }
         }
         stage('Build Docker image'){

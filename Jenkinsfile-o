@@ -22,3 +22,30 @@ pipeline {
     }
 }
 
+<!----------old windows-------------->
+pipeline{
+    agent any
+    stages{
+        stage('Build Maven'){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/swapnilxi/jenkins-java/']])
+                bat 'mvn clean install'
+            }
+        }    
+        stage('Build docker'){
+            steps{
+                script{
+                bat 'docker build -t swapnilxi/javajenkins .'
+                }
+            }
+        }
+        stage('run docker'){
+            steps{
+                script{
+                bat 'docker run -p 8080:8080 swapnilxi/javajenkins'
+                }
+            }
+        }
+    }
+}
+<!---------------------------!>
