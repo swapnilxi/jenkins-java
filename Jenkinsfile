@@ -9,7 +9,7 @@ pipeline {
             steps {
                 // Run Maven on a Unix agent.
               
-                sh "./mvnw clean"
+                sh "./mvnw clean install"
             }
         }
         stage('deploying jar') { 
