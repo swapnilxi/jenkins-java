@@ -2,7 +2,7 @@
  In this projcet I have just connected and uploaded a spring boot application to AWS EC2
  I have a added Docker and jenkins file to upload the Spring boot app to AWS 
 
- Certainly! Here is the README content in Markdown format:
+# If you want to upload your file to EC2 with jenkins pipeline, here is the step I followed 
 
 
 
